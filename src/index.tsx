@@ -8,6 +8,6 @@ main.setAttribute('id', 'main');
 document.body.appendChild(main);
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Hello compiler="TypeScript" framework="React" buildTool="webpack" />,
     main
 );

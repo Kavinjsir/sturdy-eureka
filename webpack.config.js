@@ -6,7 +6,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const Happypack = require('happypack');
 
-
 const PATHS = {
     src: path.resolve(__dirname, 'src'),
     static: path.resolve(__dirname, 'static'),
