@@ -27,13 +27,13 @@ const common = {
         },
         extensions: ['.ts', '.tsx', '.js', '.json','.css', '.scss', '*'],
     },
-
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 loaders: 'happypack/loader?id=ts',
                 exclude: [/node_modules/],
+                // exclude: /node_modules(?!\/antd)/,
             },
         ],
     },
