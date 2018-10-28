@@ -1,37 +1,35 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@src/*": ["./src/*"]
-      },
-      "outDir": "./static",
-      "allowJs": false,
-      "alwaysStrict": true,
-      "declaration": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "forceConsistentCasingInFileNames": true,
-      "allowUnreachableCode": false,
-      "allowUnusedLabels": false,
-      "noEmit": true,
-      "noEmitOnError": true,
-      "noFallthroughCasesInSwitch": true,
-      "noImplicitAny": true,
-      "noImplicitReturns": true,
-      "noImplicitThis": true,
-      "noUnusedParameters": true,
-      "noUnusedLocals": true,
-      "removeComments": true,
-      "strictNullChecks": true,
-      "sourceMap": false,
-      "downlevelIteration": true,
-      "target": "es6",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "jsx": "react",
-      "lib": ["dom", "es2015", "es2017"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
     },
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules"]
-  }
-  
+    "outDir": "./static",
+    "allowJs": false,
+    "alwaysStrict": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"]
+  },
+  "include": ["src/pages/*", "src/*"],
+  "exclude": ["src/uikit/*", "src/vendor/*"]
+}
