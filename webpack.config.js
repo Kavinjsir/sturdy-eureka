@@ -145,6 +145,15 @@ const dev = {
       chunkFilename: '[name].css',
     }),
   ],
+  devServer: {
+    proxy: {
+      '/home': {
+        target: 'http://localhost:8080',
+        pathRewrite: (path, req) => '/static',
+      },
+    },
+  },
+
 };
 
 const prod = {
