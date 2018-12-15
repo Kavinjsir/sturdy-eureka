@@ -1,7 +1,5 @@
 # Overall Architecture Design
 
----
-
 ## Description
 
 A Dashboard integrating virtual and real life data so on.
