@@ -5,6 +5,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin')
+
+const workers = require('os').cpus().length - 2
 
 const PATHS = {
   src: path.resolve(__dirname, 'src'),
@@ -51,10 +54,24 @@ const common = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-        },
+        use: [
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: '/tmp/.webpack-cache-loader', // Will store cache file
+            },
+          },
+          {
+            loader: 'thread-loader',
+            options: { workers },
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              happyPackMode: true,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
       {
@@ -66,6 +83,7 @@ const common = {
       },
     ],
   },
+
   plugins: [
     new CleanWebpackPlugin([PATHS.static], {
       root: process.cwd(),
@@ -129,4 +147,24 @@ const dev = {
   ],
 };
 
-module.exports = merge(common, dev);
+const prod = {
+  mode: 'production',
+  output: {
+    publicPath: `/static/`,
+    path: PATHS.static,
+    filename: '[name].[chunkhash].js',
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[name].[contenthash].css',
+    }),
+  ],
+  optimization: {
+    minimizer: [new TerserPlugin({ cache: true, parallel: true })],
+  },
+};
+
+module.exports = (env = {}) => {
+  return env.production ? merge(common, prod) : merge(common, dev)
+}

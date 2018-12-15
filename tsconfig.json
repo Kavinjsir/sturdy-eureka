@@ -22,6 +22,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "removeComments": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
     "sourceMap": true,
     "downlevelIteration": true,
