@@ -8,7 +8,4 @@ const main = document.createElement('div');
 main.setAttribute('id', 'main');
 document.body.appendChild(main);
 
-ReactDOM.render(
-  <Home  />,
-  main
-);
+ReactDOM.render(<Home />, main);

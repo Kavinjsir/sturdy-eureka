@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { renderMatrix } from './background';
 import WeatherCard from './weather';
 import * as styles from './styles.scss';
 
@@ -12,12 +13,17 @@ export default class Home extends React.PureComponent<Props, State> {
     super(props);
   }
 
+  componentDidMount() {
+    renderMatrix(this.refs.canvas);
+  }
+
   render() {
     // FIXME: SHOULD ALIGN WITH REAL TIME
     const [date, time] = new Date().toLocaleString().split(',');
 
     return (
       <div>
+        <canvas ref="canvas" />
         <div className={styles.topRow}>
           <WeatherCard />
         </div>
