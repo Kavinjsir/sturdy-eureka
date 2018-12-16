@@ -7,7 +7,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin')
 
-const workers = require('os').cpus().length - 2
+const workers = require('os').cpus().length - 2;
 
 const PATHS = {
   src: path.resolve(__dirname, 'src'),
@@ -26,8 +26,7 @@ const common = {
   },
 
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.scss$/,
         loaders: [
           MiniCssExtractPlugin.loader,
@@ -54,8 +53,7 @@ const common = {
       },
       {
         test: /\.tsx?$/,
-        use: [
-          {
+        use: [{
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/tmp/.webpack-cache-loader', // Will store cache file
@@ -63,7 +61,9 @@ const common = {
           },
           {
             loader: 'thread-loader',
-            options: { workers },
+            options: {
+              workers
+            },
           },
           {
             loader: 'ts-loader',
@@ -170,7 +170,10 @@ const prod = {
     }),
   ],
   optimization: {
-    minimizer: [new TerserPlugin({ cache: true, parallel: true })],
+    minimizer: [new TerserPlugin({
+      cache: true,
+      parallel: true
+    })],
   },
 };
 

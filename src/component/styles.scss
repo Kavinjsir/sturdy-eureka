@@ -1,3 +1,70 @@
 #canvas {
   background: #000;
 }
+
+.top-row {
+  z-index: 2;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.top-right {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.center {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.clock {
+  >div {
+    text-align: center;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    user-select: none;
+    letter-spacing: -5px;
+    cursor: default;
+  }
+}
+
+.time {
+  font-size: 1050%;
+}
+
+.date {
+  font-size: 337.5%;
+}
+
+.input {
+  width: 13.7em;
+  margin: 0 auto;
+  padding-top: 15px;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  transition: border-color .2s ease;
+}
